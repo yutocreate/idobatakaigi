@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(3, 0, 2),
   },
 }));
-export default function SignIn() {
+export default function SignIn({setName}) {
   const classes = useStyles();
   return (
     <Container component="main" maxWidth="xs">
