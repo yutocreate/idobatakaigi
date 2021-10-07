@@ -46,12 +46,12 @@ export default function SignIn({ setName }) {
   const classes = useStyles();
   const [disabled, setDisabled] = useState(true);
   const [string, setString] = useState("");
-  console.log({disabled, string});
+  console.log({ disabled, string });
 
   useEffect(() => {
-    const disabled = string === ''
-    setDisabled(disabled)                                                     
-  }, [string])
+    const disabled = string === "";
+    setDisabled(disabled);
+  }, [string]);
 
   return (
     <Container component="main" maxWidth="xs">
@@ -70,7 +70,13 @@ export default function SignIn({ setName }) {
             label="ニックネーム"
             name="name"
             autoFocus
-            onChange={e => setString(e.target.value)}
+            onChange={(e) => setString(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                setName(e.target.value);
+                e.preventDefault();
+              }
+            }}
           />
           <Button
             type="button"
@@ -80,7 +86,7 @@ export default function SignIn({ setName }) {
             className={classes.submit}
             disabled={disabled}
             onClick={() => {
-              setName(string)
+              setName(string);
             }}
           >
             はじめる
